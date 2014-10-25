@@ -80,6 +80,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton2.setText("MOACS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Instancias");
 
@@ -154,6 +159,19 @@ public class Principal extends javax.swing.JFrame {
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String archivo = (String) comboBoxArchivos.getSelectedItem();
+            System.out.println(archivo);
+            int capacidad = Integer.parseInt(textCapacidad.getText());
+            System.out.println(capacidad);
+            SolucionMoacs algoritmo = new SolucionMoacs(archivo,capacidad);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

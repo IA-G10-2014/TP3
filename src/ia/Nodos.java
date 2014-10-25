@@ -28,34 +28,47 @@ public class Nodos {
     private float service;
 
     /**
-     * @return the orden
+     * Constructor
+     * @param ordenA
+     * @param xA
+     * @param yA
+     * @param demandaA
+     * @param readyA
+     * @param dueA
+     * @param serviceA
      */
     public Nodos(int ordenA, float xA, float yA, float demandaA, float readyA, float dueA, float serviceA) {
-        orden=ordenA;
-        x=xA;
-        y=yA;
-        demanda=demandaA;
-        ready=readyA;
-        due=dueA;
-        service=serviceA;
+        orden = ordenA;
+        x = xA;
+        y = yA;
+        demanda = demandaA;
+        ready = readyA;
+        due = dueA;
+        service = serviceA;
     }
-    
-    public static List<Nodos> fileToArrayNodos(String patch) throws FileNotFoundException, IOException{
+
+    public static List<Nodos> fileToArrayNodos(String patch) throws FileNotFoundException, IOException {
         List<Nodos> nodos = new ArrayList();
-        BufferedReader br = new BufferedReader(new FileReader(patch));
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            //Como el delimitador es una coma, lo indico al momento de invocar al StringTok
-            StringTokenizer tokens = new StringTokenizer(linea, ";");
-            //Ahora recupero los datos y los muestro, el trim solo elimina espacios en blanco si //es que los hay, una forma segura para leer datos:
-            int orden = Integer.valueOf(tokens.nextToken().trim());
-            float x = Float.valueOf(tokens.nextToken().trim());
-            float y = Float.valueOf(tokens.nextToken().trim());
-            float demanda = Float.valueOf(tokens.nextToken().trim());
-            float ready = Float.valueOf(tokens.nextToken().trim());
-            float due = Float.valueOf(tokens.nextToken().trim());
-            float service = Float.valueOf(tokens.nextToken().trim());
-            nodos.add(new Nodos(orden, x, y, demanda, ready, due, service));
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(patch));
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                //Como el delimitador es una coma, lo indico al momento de invocar al StringTok
+                StringTokenizer tokens = new StringTokenizer(linea, ";");
+                //Ahora recupero los datos y los muestro, el trim solo elimina espacios en blanco si //es que los hay, una forma segura para leer datos:
+                System.out.println(linea);
+                int orden = Integer.valueOf(tokens.nextToken().trim());
+                float x = Float.valueOf(tokens.nextToken().trim());
+                float y = Float.valueOf(tokens.nextToken().trim());
+                float demanda = Float.valueOf(tokens.nextToken().trim());
+                float ready = Float.valueOf(tokens.nextToken().trim());
+                float due = Float.valueOf(tokens.nextToken().trim());
+                float service = Float.valueOf(tokens.nextToken().trim());
+                nodos.add(new Nodos(orden, x, y, demanda, ready, due, service));
+            }
+            br.close();
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
         }
         return nodos;
     }
@@ -154,9 +167,9 @@ public class Nodos {
     public void setService(float service) {
         this.service = service;
     }
-    
+
     @Override
-    public String toString(){
-        return "Nodo " + String.valueOf(orden) + " en ("+ String.valueOf(x) + " , " + String.valueOf(y) + ")";
+    public String toString() {
+        return "Nodo " + String.valueOf(orden) + " en (" + String.valueOf(x) + " , " + String.valueOf(y) + ")";
     }
 }
