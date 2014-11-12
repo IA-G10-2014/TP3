@@ -174,7 +174,7 @@ public class Nodo {
                 Math.pow(x - n.x, 2)
                 + Math.pow(y - n.y, 2));
     }
-
+    
     @Override
     public String toString() {
         return "Nodo " + String.valueOf(orden) + " en (" + String.valueOf(x) + " , " + String.valueOf(y) + ")";

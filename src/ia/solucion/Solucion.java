@@ -40,4 +40,38 @@ public class Solucion {
                 return true;
         return false;
     }
+    
+    public void remove(Nodo n){
+        float nCosto = 0;
+        for(Recorrido r:recorridos){
+                r.remove(n);
+                if(r.getSize()==0)
+                    recorridos.remove(r);
+                nCosto+=r.getCosto();
+        }
+    }
+    
+    public void add(Nodo n, int capacidad){
+        float min = 0;
+        int posMin = -1;
+        float costoAux = 0;
+        float nCosto = 0;
+        for(int x=0; x<recorridos.size();x++){
+            costoAux = recorridos.get(x).costoDeInsertar(n);
+            if(costoAux<min && costoAux<(float)capacidad){
+                min=costoAux;
+                posMin=x;
+            }
+        }
+        if(posMin>=0){
+            recorridos.get(posMin).add(n);
+        }else{
+            Recorrido nR = new Recorrido();
+            nR.add(n);
+            recorridos.add(nR);
+        }
+        for(Recorrido r:recorridos){
+                nCosto+=r.getCosto();
+        }
+    }
 }
