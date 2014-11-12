@@ -8,7 +8,8 @@
  *
  * @author marcelo
  */
-package ia;
+package ia.gui;
+
 public class Rutas {
 
     /**

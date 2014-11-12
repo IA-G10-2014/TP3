@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ia;
+package ia.util;
 import java.util.Random;
 /**
  *

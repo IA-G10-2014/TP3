@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ia;
+package ia.solucion;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,14 +17,14 @@ import java.util.List;
 public class ProblemaVrptw {
 
     private int capacidad;
-    private List<Nodos> nodos = new ArrayList();
+    private List<Nodo> nodos = new ArrayList();
 
     public ProblemaVrptw(String archivo, int c) throws FileNotFoundException, IOException {
         String patch = "instancias/" + archivo;
         capacidad = c;
-        nodos = Nodos.fileToArrayNodos(patch);
+        nodos = Nodo.fileToArrayNodos(patch);
         System.out.println(patch + " capacidad:" + String.valueOf(c));
-        for (Nodos n : nodos) {
+        for (Nodo n : nodos) {
             System.out.println(n);
         }
     }

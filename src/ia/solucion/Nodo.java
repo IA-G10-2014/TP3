@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ia;
+package ia.solucion;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -17,7 +17,7 @@ import java.util.StringTokenizer;
  *
  * @author marcelo
  */
-public class Nodos {
+public class Nodo {
 
     private int orden;
     private float x;
@@ -29,6 +29,7 @@ public class Nodos {
 
     /**
      * Constructor
+     *
      * @param ordenA
      * @param xA
      * @param yA
@@ -37,7 +38,7 @@ public class Nodos {
      * @param dueA
      * @param serviceA
      */
-    public Nodos(int ordenA, float xA, float yA, float demandaA, float readyA, float dueA, float serviceA) {
+    public Nodo(int ordenA, float xA, float yA, float demandaA, float readyA, float dueA, float serviceA) {
         orden = ordenA;
         x = xA;
         y = yA;
@@ -47,8 +48,8 @@ public class Nodos {
         service = serviceA;
     }
 
-    public static List<Nodos> fileToArrayNodos(String patch) throws FileNotFoundException, IOException {
-        List<Nodos> nodos = new ArrayList();
+    public static List<Nodo> fileToArrayNodos(String patch) throws FileNotFoundException, IOException {
+        List<Nodo> nodos = new ArrayList();
         try {
             BufferedReader br = new BufferedReader(new FileReader(patch));
             String linea;
@@ -64,7 +65,7 @@ public class Nodos {
                 float ready = Float.valueOf(tokens.nextToken().trim());
                 float due = Float.valueOf(tokens.nextToken().trim());
                 float service = Float.valueOf(tokens.nextToken().trim());
-                nodos.add(new Nodos(orden, x, y, demanda, ready, due, service));
+                nodos.add(new Nodo(orden, x, y, demanda, ready, due, service));
             }
             br.close();
         } catch (IOException | NumberFormatException e) {
@@ -166,6 +167,12 @@ public class Nodos {
      */
     public void setService(float service) {
         this.service = service;
+    }
+
+    public float costo(Nodo n) {
+        return (float) Math.sqrt(
+                Math.pow(x - n.x, 2)
+                + Math.pow(y - n.y, 2));
     }
 
     @Override

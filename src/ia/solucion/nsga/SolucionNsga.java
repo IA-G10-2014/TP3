@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package ia.solucion.nsga;
 
-package ia;
-
+import ia.solucion.ProblemaVrptw;
 import java.io.IOException;
-
 
 /**
  *
  * @author marcelo
  */
-public class SolucionMoacs extends ProblemaVrptw{
+public class SolucionNsga extends ProblemaVrptw{
     
-    public SolucionMoacs(String archivo, int c) throws IOException {
+    public SolucionNsga(String archivo, int c) throws IOException {
         super(archivo,c);
     }
     
+
 }

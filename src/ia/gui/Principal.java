@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ia;
+package ia.gui;
 
+import ia.solucion.moacs.SolucionMoacs;
+import ia.solucion.nsga.SolucionNsga;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
